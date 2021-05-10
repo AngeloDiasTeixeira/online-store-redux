@@ -9,7 +9,6 @@ const ProductDetail = () => {
     let cart = useSelector(selectCartItems);
     let dispatch = useDispatch();
     const [quantity, setQuantity] = useState(0);
-    console.log("PRODUCTDETAIL: ", cart);
 
     let { productId:id } = useParams();
     let product = products.find(p => p.id == id);
