@@ -10,7 +10,7 @@ export const addToCartAsync = createAsyncThunk("cart/addToCart", ({productIdQuan
     if(inCart) newCart = cart.map(p => (p.id == id) ? {...p, quantity: quantity+p.quantity} : {...p});
     else newCart = cart.concat({...products.find(p => p.id == id),quantity:quantity});
         
-    fetch(`${domainAndPort}api/shoppingCart`, {
+    fetch(`api/shoppingCart`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
