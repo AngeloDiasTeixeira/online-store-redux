@@ -30,7 +30,7 @@ app.get("/api/shoppingCart", (req, res) => {
     res.json(shoppingCart);
 });
 
-app.post("/api/shoppingCart", (req, res) => {
+app.post("/.*/api/shoppingCart$/", (req, res) => {
     shoppingCart = req.body;
     res.json(shoppingCart);
 })
