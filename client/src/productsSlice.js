@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const domainAndPort = ((process.env.NODE_ENV) == "development") ? "http://localhost:3001/" : "";
 
 export const fetchProductsAsync = createAsyncThunk("products/fetchProducts", async () => {
+    alert(`${domainAndPort}api/products`);
     let response = await fetch(`${domainAndPort}api/products`);
     let products = await response.json();
     return products;
