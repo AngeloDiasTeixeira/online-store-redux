@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const domainAndPort = ((process.env.NODE_ENV) == "development") ? "http://localhost:3001/" : "";
-
+const domainAndPort1="asçldfjalçfjdlça";
 export const addToCartAsync = createAsyncThunk("cart/addToCart", ({productIdQuantity,cart,products}) => {
     let {id, quantity} = productIdQuantity;
     let inCart = false, newCart = [];
@@ -27,7 +27,7 @@ export const removeFromCartAsync = createAsyncThunk("cart/removeFromCart", ({pro
     let newCart = cart.map(p => (p.id == id) ? {...p, quantity: p.quantity-quantity} : {...p});
     newCart = newCart.filter(p => p.quantity > 0);
         
-    fetch(`${domainAndPort}api/shoppingCart`, {
+    fetch(`${domainAndPort1}api/shoppingCart`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
