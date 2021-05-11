@@ -1,15 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const domainAndPort = ((process.env.NODE_ENV) == "development") ? "http://localhost:3001/" : "";
-const domainAndPort1="asçldfjalçfjdlça";
+const domainAndPort = ((process.env.NODE_ENV) === "development") ? "http://localhost:3001/" : "";
+
 export const addToCartAsync = createAsyncThunk("cart/addToCart", ({productIdQuantity,cart,products}) => {
     let {id, quantity} = productIdQuantity;
     let inCart = false, newCart = [];
     cart.forEach(p => {if(p.id == id) inCart=true;});
         
     if(inCart) newCart = cart.map(p => (p.id == id) ? {...p, quantity: quantity+p.quantity} : {...p});
-    else newCart = cart.concat({...products.find(p => p.id == id),quantity:quantity});
-    alert(`${domainAndPort}api/shoppingCart`);    
+    else newCart = cart.concat({...products.find(p => p.id == id),quantity:quantity});   
     fetch(`api/shoppingCart`, {
         method: "POST",
         headers: {
@@ -27,7 +26,6 @@ export const removeFromCartAsync = createAsyncThunk("cart/removeFromCart", ({pro
     let newCart = cart.map(p => (p.id == id) ? {...p, quantity: p.quantity-quantity} : {...p});
     newCart = newCart.filter(p => p.quantity > 0);
     
-    alert(`${domainAndPort1}api/shoppingCart`);  
     fetch(`${domainAndPort}api/shoppingCart`, {
         method: "POST",
         headers: {
