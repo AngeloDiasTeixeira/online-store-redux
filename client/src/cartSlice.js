@@ -26,8 +26,9 @@ export const removeFromCartAsync = createAsyncThunk("cart/removeFromCart", ({pro
     let {id, quantity} = productIdQuantity;
     let newCart = cart.map(p => (p.id == id) ? {...p, quantity: p.quantity-quantity} : {...p});
     newCart = newCart.filter(p => p.quantity > 0);
-        
-    fetch(`${domainAndPort1}api/shoppingCart`, {
+    
+    alert(`${domainAndPort1}api/shoppingCart`);  
+    fetch(`${domainAndPort}api/shoppingCart`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
